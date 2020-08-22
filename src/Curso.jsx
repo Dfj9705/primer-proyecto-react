@@ -1,30 +1,38 @@
 import React from 'react'
+import Proptypes from 'prop-types'
 
-
-const Curso = () =>(
-    <article className="card">
+const Curso = ({title,image,price, profesor}) =>(
+    <article className="card" id={title}>
         <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
-          <img src="https://ux.ed.team/img/curso-portada.png" alt=""/>
+          <img src={image} alt={title}/>
         </div>
         <div className="card__data s-border s-radius-br s-radius-bl s-pxy-2">
-          <h3 className="t5 s-mb-2 s-center">
-            Programación orientada a objetos con Go
-          </h3>
-          <div className="s-mb-2 s-main-center">
-            <div className="card__teacher s-cross-center">
-              <div className="card__avatar s-mr-1">
-                <div className="circle img-container">
-                  <img src="https://ux.ed.team/img/profesor.jpg" alt=""/>
-                </div>
-              </div>
-              <span className="small">Alexys Lozada</span>
-            </div>
+          <h3 className="center">{title}</h3>
+          <div className="s-main-center">
+            <span>{`${profesor}`}</span>
           </div>
           <div className="s-main-center">
-            <a className="button--ghost-alert button--tiny" href="https:/ed.team">$ 20USD</a>
+            <a className="button--ghost-alert button--tiny" href="https:/ed.team">$ {`${price}`}</a>
           </div>
+          
         </div>
     </article>
 )
+
+Curso.propTypes = {
+  title : Proptypes.string,
+  image : Proptypes.string,
+  precio : Proptypes.number,
+  profesor : Proptypes.string,
+}
+
+Curso.defaultProps = {
+  title : "No hay titulo",
+  image : "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
+  precio : "--",
+  profesor : ''
+}
+
+
 
 export default Curso
