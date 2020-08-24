@@ -30,7 +30,7 @@ class Formulario extends Component{
         return(
             <div className='ed-grid'>
                 <h1>Formulario {this.props.name}</h1>
-                <h4>Fecha Actual: {Math.ceil(this.state.fecha/1000)}</h4>
+               
                 <form id="elemento">
                     <div className="ed-grid m-grid-2" >
                         
@@ -54,11 +54,7 @@ class Formulario extends Component{
     }
 
     componentDidMount(){
-        let elemento = document.getElementById("elemento")
-        this.intervaloFecha = setInterval(()=>{
-            this.cambiarFecha()
-            console.log(new Date())
-        },1000)
+       
     }
 
     componentDidUpdate(prevProps,prevState){
@@ -67,7 +63,7 @@ class Formulario extends Component{
     }
 
     componentWillUnmount(){
-        clearInterval(this.intervaloFecha())
+        
     }
 }
 
