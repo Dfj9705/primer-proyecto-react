@@ -1,26 +1,26 @@
 import React, {Component} from 'react'
 
-class Formulario extends Component{
+class form extends Component{
 
     constructor(props){
         super(props)
 
         this.state = {
-            nombre: "",
-            correo: "",
+            name: "",
+            mail: "",
             fecha: new Date()
         }
 
-        this.cambiarNombre = this.cambiarCampo.bind(this)
-        this.cambiarNombre = this.cambiarFecha.bind(this)
+        this.updateField = this.updateField.bind(this)
+        this.updateDate = this.updateDate.bind(this)
     }
 
-    cambiarCampo( {value}, type ){
+    updateField( {value}, type ){
         
         this.setState({[type] : value})
     }
 
-    cambiarFecha(){
+    updateDate(){
         this.setState({
             fecha: new Date()
         })
@@ -31,23 +31,23 @@ class Formulario extends Component{
             <div className='ed-grid'>
                 <h1>Formulario {this.props.name}</h1>
                
-                <form id="elemento">
+                <form id="form-element">
                     <div className="ed-grid m-grid-2" >
                         
                         <div className="form__item">
-                            <label htmlFor="nombre">Nombre Completo</label>
-                            <input type="text" onChange={e => this.cambiarCampo(e.target, "nombre")}/>
+                            <label htmlFor="name">Nombre Completo</label>
+                            <input type="text" onChange={e => this.updateField(e.target, "name")}/>
                         </div>
                         <div className="form__item">
                             <label htmlFor="email">Correo Electrónico </label>
-                            <input type="email" onChange={e => this.cambiarCampo(e.target, "correo")}/>
+                            <input type="email" onChange={e => this.updateField(e.target, "mail")}/>
                         </div>
                         
                     </div>
                 </form>
                 <div>
-                    <h2>{`Hola ${this.state.nombre}`}</h2>
-                    <span>{`Tu correo es ${this.state.correo}`}</span>
+                    <h2>{`Hola ${this.state.name}`}</h2>
+                    <span>{`Tu Correo es ${this.state.mail}`}</span>
                 </div>
             </div>
         )
@@ -67,4 +67,4 @@ class Formulario extends Component{
     }
 }
 
-export default Formulario
+export default form
