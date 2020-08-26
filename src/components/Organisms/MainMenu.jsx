@@ -11,10 +11,10 @@ const MainMenu = () =>(
             <div className="s-grid-1 lg-cols-3 s-cross-center s-main-end">
                 <nav className="main-menu" id="main-menu">
                     <ul>
-                        <li><NavLink exact activeClassName="activo" to="/">Inicio</NavLink></li>
-                        <li><NavLink activeClassName="activo" to="/cursos">Cursos</NavLink></li>
-                        <li><NavLink activeClassName="activo" to="/formulario">Formulario</NavLink></li>
-                        <li><NavLink activeClassName="activo" to="/usuarios">Usuarios</NavLink></li>
+                        <li><NavLink exact activeClassName="active" to="/">Inicio</NavLink></li>
+                        <li><NavLink activeClassName="active" to="/cursos">Cursos</NavLink></li>
+                        <li><NavLink activeClassName="active" to="/formulario">Formulario</NavLink></li>
+                        <li><NavLink activeClassName="active" to="/usuarios">Usuarios</NavLink></li>
                     </ul>
                 </nav>
                 <div className="main-menu-toggle to-l">
