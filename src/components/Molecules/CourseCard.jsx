@@ -25,14 +25,14 @@ const CourseCard = ({id,title,image,price, professor}) =>(
 CourseCard.propTypes = {
   title : Proptypes.string,
   image : Proptypes.string,
-  precio : Proptypes.number,
+  price : Proptypes.number,
   professor : Proptypes.string,
 }
 
 CourseCard.defaultProps = {
   title : "No hay titulo",
   image : "https://www.publicdomainpictures.net/pictures/280000/nahled/not-found-image-15383864787lu.jpg",
-  precio : "--",
+  price : "--",
   professor : ''
 }
 
