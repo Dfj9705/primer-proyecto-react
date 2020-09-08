@@ -6,6 +6,7 @@ import store from "../redux/store"
 import { getCourseList } from '../redux/actionCreators';
 store.dispatch(getCourseList())
 const App = () => (
+  // provee de un flujo de informacion
   <Provider store={store}>
     <AppRoutes />
   </Provider>
