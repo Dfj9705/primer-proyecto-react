@@ -1,6 +1,7 @@
-import {createStore, combineReducers} from "redux"
-import { ADD_TO_CART, DELETE_FROM_CART } from "./actions"
+import {createStore, combineReducers, applyMiddleware} from "redux"
+import { ADD_TO_CART, DELETE_FROM_CART, GET_COURSE_LIST } from "./actions"
 import { composeWithDevTools} from "redux-devtools-extension"
+import thunk from "redux-thunk"
 
 const initialStore = {
   cart: [] 
@@ -8,36 +9,7 @@ const initialStore = {
 }
 
 const initialCourses = {
-  courses: [
-    {
-      "id": 1,
-      "title": "React desde Cero",
-      "image": "https://edteam-media.s3.amazonaws.com/courses/original/f7dad9a6-e060-4305-9adf-b9a9079075de.jpg",
-      "price": 20,
-      "professor": "Daniel Fuentes"
-    },
-    {
-      "id": 2,
-      "title": "HMTL desde Cero",
-      "image": "https://edteam-media.s3.amazonaws.com/courses/original/26557907-0555-427e-a40c-6ff207f98d72.png",
-      "price": 25,
-      "professor": "Javier Fuentes"
-    },
-    {
-      "id": 3,
-      "title": "GO desde Cero",
-      "image": "https://edteam-media.s3.amazonaws.com/courses/original/a9913502-8af2-400b-8095-7b78f52200dc.png",
-      "price": 30,
-      "professor": "Abner Fuentes"
-    },
-    {
-      "id": 4,
-      "title": "CSS desde Cero",
-      "image": "https://edteam-media.s3.amazonaws.com/courses/original/daa72e4e-c5d0-406e-9f6d-01e646bf719b.png",
-      "price": 10,
-      "professor": "Daniel Fuentes"
-    }
-  ]
+  courses: []
 }
 
 const rootReducer = (state = initialStore, {type, id}) => {
@@ -59,7 +31,13 @@ const rootReducer = (state = initialStore, {type, id}) => {
 }
 
 const coursesReducer = (state = initialCourses, action)=>{
+  if(action.type === GET_COURSE_LIST){
+    return {
+      ...state,
+      courses: action.courses
+    }
+  }
   return state 
 }
 
-export default createStore(combineReducers({rootReducer,coursesReducer}), composeWithDevTools())
+export default createStore(combineReducers({rootReducer,coursesReducer}), composeWithDevTools(applyMiddleware(thunk)))
