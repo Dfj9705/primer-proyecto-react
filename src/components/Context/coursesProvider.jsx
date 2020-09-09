@@ -1,21 +1,22 @@
 import React, {component, Component} from "react"
 import coursesContext from "./coursesContext"
+import Axios from "axios"
 
 class CoursesProvider extends Component {
     constructor (props){
         super(props)
         this.state ={
-            courses:[
-                {
-                    "id": 1,
-                    "title": "React desde Cero con context API",
-                    "image": "https://edteam-media.s3.amazonaws.com/courses/original/f7dad9a6-e060-4305-9adf-b9a9079075de.jpg",
-                    "price": 20,
-                    "professor": "Daniel Fuentes"
-                }   
-            ]
+            courses:[]
         }
     }
+
+    componentDidMount(){
+        Axios.get("http://my-json-server.typicode.com/Dfj9705/json-db/cursos")
+        .then(response=>this.setState({
+          courses: response.data
+        }
+        ))
+      }
 
     render(){
         return(
