@@ -8,10 +8,12 @@ import MainMenu from './Organisms/MainMenu'
 import History from './Pages/History'
 import Home from './Pages/Home'
 import Users from "./Pages/Users"
+import CoursesProvider from './Context/coursesProvider';
 
 
 const App = () => (
-  <Router>
+  <CoursesProvider>
+    <Router>
     <MainMenu />
     <Switch>
     <Route path="/" exact component={Home}/>
@@ -29,6 +31,7 @@ const App = () => (
     )}/>
     </Switch>
   </Router>
+  </CoursesProvider>
 )
 
 export default App;
