@@ -9,10 +9,11 @@ import History from './Pages/History'
 import Home from './Pages/Home'
 import Users from "./Pages/Users"
 import CoursesProvider from './Context/coursesProvider';
-
+//comentario
 
 const App = () => (
   <CoursesProvider>
+  
     <Router>
     <MainMenu />
     <Switch>
