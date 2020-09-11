@@ -1,17 +1,11 @@
-import React from 'react' 
+import React, { useContext } from 'react' 
 import CourseGrid from '../Organisms/CourseGrid'
 import coursesContext from '../Context/coursesContext'
 
-
-
-
-const Courses = () =>(
-
-    <coursesContext.Consumer>
-      { context =>  <CourseGrid courses= {context.courses}/>}
-     
-    </coursesContext.Consumer>
-)
+const Courses = () =>{
+  const { courses } = useContext(coursesContext);
+  return <CourseGrid courses= {courses}/>
+}
   
     
     
