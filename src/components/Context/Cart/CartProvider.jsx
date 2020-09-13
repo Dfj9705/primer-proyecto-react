@@ -28,9 +28,9 @@ const CartProvider = ({children}) =>{
     const [state, dispatch] = useReducer(cartReducer, initialState)
 
     return (
-        <CartContext.CartProvider value={[state, dispatch]}>
+        <CartContext.Provider value={[state, dispatch]}>
             {children}
-        </CartContext.CartProvider>
+        </CartContext.Provider>
     )
 }
 
