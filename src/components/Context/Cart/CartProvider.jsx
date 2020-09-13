@@ -9,7 +9,10 @@ const initialState = {
 const cartReducer = (state, {type, course}) =>{
 
     if(type === ADD_TO_CART){
-        return {
+       
+        if(state.cart.find(a => a=== course)) return state
+        return{
+            ...state,
             cart: state.cart.concat(course)
         }
     }
