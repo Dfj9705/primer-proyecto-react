@@ -16,7 +16,7 @@ const cartReducer = (state, {type, course}) =>{
 
     if(type === REMOVE_FROM_CART){
         return {
-            cart: state.cart.filter(c => c.id !== course)
+            cart: state.cart.filter(c => c !== course)
         }
     }
     

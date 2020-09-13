@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Proptypes from 'prop-types'
 import {Link} from "react-router-dom"
+import CartContext from '../Context/Cart/CartContext'
+import { ADD_TO_CART, REMOVE_FROM_CART } from '../Context/Cart/actions'
 
-const CourseCard = ({id,title,image,price, professor}) =>(
+const CourseCard = ({id,title,image,price, professor}) =>{
+
+  const [state, dispatch] = useContext(CartContext)
+
+
+  return (
     <article className="card" id={title}>
         <div className="img-container s-ratio-16-9 s-radius-tr s-radius-tl">
           <Link to={`/cursos/${id}`}>
@@ -15,12 +22,30 @@ const CourseCard = ({id,title,image,price, professor}) =>(
             <span>{`${professor}`}</span>
           </div>
           <div className="s-main-center">
-            <a className="button--ghost-alert button--tiny" href="https:/ed.team">$ {`${price}`}</a>
+            {
+              state.cart.find(c => c === id )
+              ? <button 
+                onClick={()=>dispatch({
+                  type: REMOVE_FROM_CART,
+                  course: id
+                })}
+                className="button--ghost-alert button--tiny">
+                  Remover del carrito
+                </button>
+              : <button 
+                  onClick={()=>dispatch({
+                    type: ADD_TO_CART,
+                    course: id
+                  })} 
+                  className="button--ghost-alert button--tiny">$ {`${price}`}
+                </button>
+            }
           </div>
           
         </div>
     </article>
 )
+}
 
 CourseCard.propTypes = {
   title : Proptypes.string,
